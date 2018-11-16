@@ -27,7 +27,13 @@ def saveanswer(bot, update):
         if len(lstgood) == 3 and len(lstbad) == 3:
             i = 0
             update.message.reply_text("All films are entered!")
-            best_lst = backend.Get_Best_Films(lstgood, lstbad)
+            try:
+                best_lst = backend.Get_Best_Films(lstgood, lstbad)
+                update.message.reply_text("Enjoy the films")
+                for elem in best_lst:
+                    update.message.reply_text(str(elem))
+            except:
+                update.message.reply_text("Server connection error")
 
 
 def testik(bot, update):
